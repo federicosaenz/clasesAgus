@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "aprendiendo node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/federicosaenz/clasesAgus.git"
+  },
+  "author": "agus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/federicosaenz/clasesAgus/issues"
+  },
+  "homepage": "https://github.com/federicosaenz/clasesAgus#readme",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "express": "^4.18.1"
+  }
+}
