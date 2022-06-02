@@ -1,0 +1,60 @@
+[
+  {
+    "userId": 1,
+    "firstName": "Krish",
+    "lastName": "Lee",
+    "phoneNumber": "123456",
+    "emailAddress": "krish.lee@learningcontainer.com",
+    "gender": "female",
+    "vip": true,
+    "age": 22,
+    "dni": "12569345",
+    "mascotas": ["perro","gato"]
+  },
+  {
+    "userId": 2,
+    "firstName": "racks",
+    "lastName": "jacson",
+    "phoneNumber": "123456",
+    "emailAddress": "racks.jacson@learningcontainer.com",
+    "gender": "male",
+    "vip": true,
+    "age": 45,
+    "dni": "32269345",
+    "mascotas": ["perro"]
+  },
+  {
+    "userId": 3,
+    "firstName": "denial",
+    "lastName": "roast",
+    "phoneNumber": "33333333",
+    "emailAddress": "denial.roast@learningcontainer.com",
+    "gender": "male", 
+    "vip": false,
+    "age": 10,
+    "dni": "12267345"
+  },
+  {
+    "userId": 4,
+    "firstName": "devid",
+    "lastName": "neo",
+    "phoneNumber": "222222222",
+    "emailAddress": "devid.neo@learningcontainer.com",
+    "gender": "female",
+    "vip": false,
+    "age": 45,
+    "dni": "12492100",
+    "mascotas": ["gato"]
+  },
+  {
+    "userId": 5,
+    "firstName": "jone",
+    "lastName": "mac",
+    "phoneNumber": "111111111",
+    "emailAddress": "jone.mac@learningcontainer.com",
+    "gender": "male",
+    "vip": true,
+    "age": 32,
+    "dni": "45889123"
+  }
+]
