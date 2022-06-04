@@ -37,7 +37,7 @@ const getPersonasByGender = (gender) => {
   }
   return arrTmp;
 }
-
+//sirve para filtrar por una caracteristica que tegan mas de 1 objeto y devuelve todos los que cumplan la condicion.
 const getPersonasByVipLevel = (vipLevel) => {
   return personas.filter(function(persona) {
     return persona.vip === vipLevel

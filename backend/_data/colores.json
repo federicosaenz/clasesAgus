@@ -1,30 +1,44 @@
 [     
   {
+      "colorId": 1,
       "nombreColor":"rojo",
-      "valorHexadec":"#f00"
+      "valorHexadec":"#f00",
+      "calido": true
   },
   {
+      "colorId": 2,
       "nombreColor":"verde",
-      "valorHexadec":"#0f0"
+      "valorHexadec":"#0f0",
+      "calido": false
   },
   {
+      "colorId": 3,
       "nombreColor":"azul",
-      "valorHexadec":"#00f"
+      "valorHexadec":"#00f",
+      "calido": false
   },
   {
+      "colorId": 4,
       "nombreColor":"cyan",
-      "valorHexadec":"#0ff"
+      "valorHexadec":"#0ff",
+      "calido": true
   },
   {
+      "colorId": 5,
       "nombreColor":"magenta",
-      "valorHexadec":"#f0f"
+      "valorHexadec":"#f0f",
+      "calido": false
   },
   {
+      "colorId": 6,
       "nombreColor":"amarillo",
-      "valorHexadec":"#ff0"
+      "valorHexadec":"#ff0",
+      "calido": true
   },
   {
+      "colorId": 7,
       "nombreColor":"negro",
-      "valorHexadec":"#000"
+      "valorHexadec":"#000",
+      "calido": false
   }
 ]
