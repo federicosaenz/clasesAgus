@@ -1,38 +1,47 @@
-const ejemplo1Modulo = require("./funciones/ejemplo1");
+const functionPersonas = require("./funciones/functionPersons");
 const funtionColores = require("./funciones/funtionColors");
 
 
-const personaDeEjemplo = ejemplo1Modulo.getPersonaById(4);
+const personaDeEjemplo = functionPersonas.getPersonaById(4);
 //console.log(personaDeEjemplo);
 
-const personasMasculinas = ejemplo1Modulo.getPersonasByGender("male");
+const personasMasculinas = functionPersonas.getPersonasByGender("male");
 // console.log(personasMasculinas);
 
-const personaNoEncontrada = ejemplo1Modulo.getPersonaByDNIOrElUltimo("45984349");
+const personaNoEncontrada = functionPersonas.getPersonaByDNIOrElUltimo("45984349");
 // console.log(personaNoEncontrada);
 
 // Traigo un usuario por id y muestro el nombre y el apellido
-// console.log(ejemplo1Modulo.formatName(ejemplo1Modulo.getPersonaById(2)));
+// console.log(functionPersonas.formatName(functionPersonas.getPersonaById(2)));
 
 // Ejemplo complejo de funciones que devuelven funciones (en realidad, estoy devolviendo funciones en base al tipo de parametro de entrada)
-// console.log(ejemplo1Modulo.getConjuntoFunciones(5)[0]())
+// console.log(functionPersonas.getConjuntoFunciones(5)[0]())
 
-//for(i in ejemplo1Modulo.personas) {
-//  console.log(`La persona ${ejemplo1Modulo.formatName(ejemplo1Modulo.personas[i])} tiene ${ejemplo1Modulo.getCantidadMascotas(ejemplo1Modulo.personas[i])} mascotas...`);
+//for(i in functionPersonas.personas) {
+//  console.log(`La persona ${functionPersonas.formatName(functionPersonas.personas[i])} tiene ${functionPersonas.getCantidadMascotas(functionPersonas.personas[i])} mascotas...`);
 //}
 
 
 // agregar un archivo que se llame funtionColores las funciones para traer un color por ID, por nombre, bulean "calidos"
-//investigar js array.map, array.reduce, array.pop, array.find, array.forEach, array.sort, array.join . (repasar todos los array.)  
+//investigar js array.map, array.reduce, array.pop, array.shift, array.find, array.forEach, array.sort, array.join, string.split,  . (repasar todos los array.)  
 
 
 
 
-console.log(funtionColores.getColorPorId(5))
+//console.log(funtionColores.getColorPorId(5))
 
-console.log(funtionColores.getColorByName("cyan"))
+// console.log(functionPersonas.addCompleteName());
 
-console.log(funtionColores.getColorByCalidez(true))
+// console.log(functionPersonas.mediaDeEdad());
+console.log(functionPersonas.agregarPersona("pepe","sarasa","23434239","asdfasdf@asdfasdf.com"));
+
+// console.log(functionPersonas.personas);
+
+//console.log(functionPersonas.getPersonas());
+
+// console.log(funtionColores.getColorByName("cyan"))
+
+// console.log(funtionColores.getColorByCalidez(true))
 
 
 

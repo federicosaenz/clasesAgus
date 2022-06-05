@@ -1,5 +1,5 @@
-const colores = require('./../_data/colores.json');
-const personas = require('./../_data/personas.json');
+const colores = require('../_data/colores.json');
+let personas = require('../_data/personas.json');
 
 function imprimir() {
   console.log(colores);
@@ -7,11 +7,16 @@ function imprimir() {
 
 /** ESTAS DOS FUNCIONES SON PARECIDAS. EN BASE A UN ARRAY, DEVUELVE 1 Y SOLO 1 RESULTADO. SI NO ENCUENTRA NADA, DEVUELVE null */
 const getPersonaById = (id) => {
-  for(i in personas) {
-    if(personas[i].userId===id) return personas[i];
-  }
-  return null;
+  // for(i in personas) {
+  //   if(personas[i].userId===id) return personas[i];
+  // }
+  let ret = null;
+  personas.forEach(function(persona) {
+    if(persona.userId===id) ret = persona;
+  })
+  return ret;
 }
+
 const getPersonaByEmailAddress = (email)=> {
   // Find trae la primera ocurrencia que encuentra en el array. Tener cuidado, que haya uno solo.
   return personas.find(function(persona) {
@@ -71,6 +76,25 @@ const getConjuntoFunciones = (parametro) => {
   }
 }
 
+const agregarPersona = (firstName,lastName,phoneNumber,emailAddress,gender,vip,age,dni,mascotas) => {
+  personas = [...personas,{userId: personas.length+1, firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,emailAddress:emailAddress,gender:gender,vip:vip,age:age,dni:dni,mascotas:mascotas}]
+}
+
+const agregarPersonasFromCSV = () => {
+  //abrir el csv
+  //obtener todas las filas
+    //Por cada fila, obtener todas las columnas
+    // en base al valor de cada columna, agregarla al array de personas con esos valores  
+}
+
+
+const getAllPhoneNumbersAsStr = () => {
+  return personas
+    .map(personas=>personas.phoneNumber)
+    .join(",")
+    .split(",")
+}
+
 // Este ejemplo es exactamente igual al anterior, pero esta simplificado a una linea
 const getConjuntoFuncionesSimplificado = (parametro) => (typeof parametro === "string") ? 
   [
@@ -83,13 +107,32 @@ const getConjuntoFuncionesSimplificado = (parametro) => (typeof parametro === "s
   ];
 
 const getCantidadMascotas = (persona) => {
-
   return persona.mascotas?.length;
+}
 
-  // if(persona.mascotas) {
-  //   return persona.mascotas.length;
-  // }
-  // return 0;
+const addCompleteName = () => {
+  return personas.map(persona=> {
+    let newPersona = persona;
+    newPersona.completeName = formatName(persona);
+    return newPersona
+  })
+}
+
+/**  */
+const mediaDeEdad = () => {
+  const edadTotal = personas.reduce((acum,persona)=>{
+    return persona.age + acum
+  }, 0);
+  return personas.length ? (edadTotal / personas.length) : 0
+}
+
+const getArrayDeEdades = () => {
+  return personas.map(persona=> persona.age);
+}
+
+/** para traer toda la lista de personas */
+const getPersonas = () => {
+  return personas;
 }
 
 module.exports = {
@@ -103,5 +146,11 @@ module.exports = {
   getConjuntoFunciones,
   getConjuntoFuncionesSimplificado,
   getCantidadMascotas,
+  addCompleteName,
+  mediaDeEdad,
+  getArrayDeEdades,
+  getAllPhoneNumbersAsStr,
+  agregarPersona,
+  getPersonas,
   personas
 }
