@@ -84,7 +84,7 @@ const agregarPersonasFromCSV = () => {
   //abrir el csv
   //obtener todas las filas
     //Por cada fila, obtener todas las columnas
-    // en base al valor de cada columna, agregarla al array de personas con esos valores  
+    // en base al valor de cada columna, agregarla al array de personas con esos valores   
 }
 
 
