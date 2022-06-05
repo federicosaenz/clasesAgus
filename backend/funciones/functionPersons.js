@@ -81,6 +81,7 @@ const agregarPersona = (firstName,lastName,phoneNumber,emailAddress,gender,vip,a
 }
 
 const agregarPersonasFromCSV = () => {
+  // usar fs para abrir el archivo
   //abrir el csv
   //obtener todas las filas
     //Por cada fila, obtener todas las columnas
