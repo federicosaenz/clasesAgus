@@ -1,5 +1,12 @@
 const colores = require('../_data/colores.json');
 let personas = require('../_data/personas.json');
+const fs = require('fs');
+const { parse } = require('csv-parse');
+//const parse = require('csv-parse');
+
+
+
+const csvData = []
 
 function imprimir() {
   console.log(colores);
@@ -80,13 +87,6 @@ const agregarPersona = (firstName,lastName,phoneNumber,emailAddress,gender,vip,a
   personas = [...personas,{userId: personas.length+1, firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,emailAddress:emailAddress,gender:gender,vip:vip,age:age,dni:dni,mascotas:mascotas}]
 }
 
-const agregarPersonasFromCSV = () => {
-  // usar fs para abrir el archivo
-  //abrir el csv
-  //obtener todas las filas
-    //Por cada fila, obtener todas las columnas
-    // en base al valor de cada columna, agregarla al array de personas con esos valores   
-}
 
 
 const getAllPhoneNumbersAsStr = () => {
@@ -136,6 +136,49 @@ const getPersonas = () => {
   return personas;
 }
 
+
+const agregarPersonasFromCSV = () => {
+  // usar fs para abrir el archivo
+  //abrir el csv
+  //obtener todas las filas
+  //Por cada fila, obtener todas las columnas
+  // en base al valor de cada columna, agregarla al array de personas con esos valores   
+}
+
+const probarCSV = () => {
+  fs.readFile("./_data/csv_personas.csv", 'utf-8', (error, data) =>{
+    if(!error){
+      console.log(data);
+    }else{
+      console.log('error: ${error}');
+    }
+  });
+}
+
+const arrayDePersonas = () => {
+  fs.createReadStream('./_data/csv_personas.csv')
+  .pipe(
+    parse({
+      delimiter: ','
+    })
+  )
+  .on('data', function (dataRow){
+    csvData.push(dataRow);
+  })
+  .on('end', function () {
+    console.log(csvData);
+  })
+  return csvData
+}
+
+const agregarKeysAlArray = () => {
+  datosCsv = arrayDePersonas
+  return datosCsv
+}
+
+
+
+
 module.exports = {
   imprimir,
   getPersonaById,
@@ -153,5 +196,8 @@ module.exports = {
   getAllPhoneNumbersAsStr,
   agregarPersona,
   getPersonas,
+  probarCSV,
+  arrayDePersonas,
+  agregarKeysAlArray,
   personas
 }

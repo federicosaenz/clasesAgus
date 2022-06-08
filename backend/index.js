@@ -33,7 +33,7 @@ const personaNoEncontrada = functionPersonas.getPersonaByDNIOrElUltimo("45984349
 // console.log(functionPersonas.addCompleteName());
 
 // console.log(functionPersonas.mediaDeEdad());
-console.log(functionPersonas.agregarPersona("pepe","sarasa","23434239","asdfasdf@asdfasdf.com"));
+//console.log(functionPersonas.agregarPersona("pepe","sarasa","23434239","asdfasdf@asdfasdf.com"));
 
 // console.log(functionPersonas.personas);
 
@@ -42,6 +42,7 @@ console.log(functionPersonas.agregarPersona("pepe","sarasa","23434239","asdfasdf
 // console.log(funtionColores.getColorByName("cyan"))
 
 // console.log(funtionColores.getColorByCalidez(true))
+console.log(functionPersonas.agregarKeysAlArray())
 
 
 
