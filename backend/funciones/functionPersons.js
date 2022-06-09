@@ -2,6 +2,7 @@ const colores = require('../_data/colores.json');
 let personas = require('../_data/personas.json');
 const fs = require('fs');
 const { parse } = require('csv-parse');
+const moment = require("moment");
 //const parse = require('csv-parse');
 
 
@@ -83,11 +84,9 @@ const getConjuntoFunciones = (parametro) => {
   }
 }
 
-const agregarPersona = (firstName,lastName,phoneNumber,emailAddress,gender,vip,age,dni,mascotas) => {
-  personas = [...personas,{userId: personas.length+1, firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,emailAddress:emailAddress,gender:gender,vip:vip,age:age,dni:dni,mascotas:mascotas}]
+const agregarPersona = (userId,firstName,lastName,phoneNumber,emailAddress,gender,vip,age,dni,mascotas,fobias) => {
+  personas = [...personas,{userId: userId, firstName:firstName,lastName:lastName,phoneNumber:phoneNumber,emailAddress:emailAddress,gender:gender,vip:vip,age:age,dni:dni,mascotas:mascotas, fobias:fobias}]
 }
-
-
 
 const getAllPhoneNumbersAsStr = () => {
   return personas
@@ -146,35 +145,69 @@ const agregarPersonasFromCSV = () => {
 }
 
 const probarCSV = () => {
-  fs.readFile("./_data/csv_personas.csv", 'utf-8', (error, data) =>{
+  fs.readFile(`${__dirname}/../_data/csv_personas.csv`, 'utf-8', (error, data) =>{
     if(!error){
       console.log(data);
     }else{
-      console.log('error: ${error}');
+      console.log(`error: ${error}`);
     }
   });
 }
 
-const arrayDePersonas = () => {
-  fs.createReadStream('./_data/csv_personas.csv')
+const arrayDePersonasSinColumns = () => {
+    
+
+  fs.createReadStream(`${__dirname}/../_data/csv_personas.csv`)
   .pipe(
     parse({
-      delimiter: ','
+      delimiter: ',',
     })
+
   )
-  .on('data', function (dataRow){
-    csvData.push(dataRow);
+  .on('data', persona => {
+    //Boolean("") <-- false
+    //Boolean("asdfadsf") <-- true
+    //Boolean(" ") <-- true
+    const isVip = Boolean(persona[24]);
+
+    const fNacDDMMYY = persona[11]; //20/03/1964 o tambien vienen fechas asi 14/02/59. El anio tiene 2 tamanios distintos, entonces vamos a sanitizarlo
+    const arrFechasSeparadas = fNacDDMMYY.split("/"); // ["20","03","1964"]
+    const fechaSanitizada = arrFechasSeparadas
+      .map((dateValue,index) => (index===2 && dateValue.length===2) ? "19" + dateValue : dateValue)
+      .join("/");
+    const dateMoment = moment(fechaSanitizada, "DD/MM/YYYY");
+    const edad = moment().diff(dateMoment,'years');
+    /*
+    dateMoment es un objeto de la clase moment, en cuyo estado (suponemos) se almacena algo así {
+      anio: 2022,
+      mes: 04
+      ... etc
+    }
+    */
+
+    // Hacer esto siempre y cuando el id del csv no coincida con los userIds que ya tenemos
+    const csvID = Number.parseInt(persona[0]);
+    //if(!personas.find(personaExistente => csvID===personaExistente.userId)) {
+    if(!personas.some(personaExistente => csvID===personaExistente.userId )) {
+      agregarPersona(csvID,persona[3],persona[2],persona[6],persona[8],persona[10],isVip,edad,persona[35],[], persona[32]);
+    }
   })
-  .on('end', function () {
-    console.log(csvData);
+  .on('end',result=> {
+    console.log(personas);
   })
-  return csvData
 }
 
-const agregarKeysAlArray = () => {
-  datosCsv = arrayDePersonas
-  return datosCsv
-}
+// const agregarKeysAlArray = () => {
+//   const a = arrayDePersonas();
+//   console.log(a);
+  // arrayDePersonas().forEach( (persona,index) => {
+  //   if(index===1) {
+  //     console.log(persona);
+  //   }
+  //   // agregarPersona()
+  // })
+  //return datosCsv
+// }
 
 
 
@@ -197,7 +230,6 @@ module.exports = {
   agregarPersona,
   getPersonas,
   probarCSV,
-  arrayDePersonas,
-  agregarKeysAlArray,
+  arrayDePersonasSinColumns,
   personas
 }

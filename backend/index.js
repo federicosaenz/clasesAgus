@@ -1,6 +1,6 @@
 const functionPersonas = require("./funciones/functionPersons");
 const funtionColores = require("./funciones/funtionColors");
-
+const moment = require("moment");
 
 const personaDeEjemplo = functionPersonas.getPersonaById(4);
 //console.log(personaDeEjemplo);
@@ -42,10 +42,9 @@ const personaNoEncontrada = functionPersonas.getPersonaByDNIOrElUltimo("45984349
 // console.log(funtionColores.getColorByName("cyan"))
 
 // console.log(funtionColores.getColorByCalidez(true))
-console.log(functionPersonas.agregarKeysAlArray())
+console.log(functionPersonas.arrayDePersonasSinColumns())
 
 
-
-
+// Tarea: hacer functionPersonas.arrayDePersonasConColumns
 
 //pendientes para explicar referencia de un array y un objeto.

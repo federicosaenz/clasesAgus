@@ -1,0 +1,78 @@
+
+/** NOTAS ACLARATORIAS: 
+
+Este ejemplo no está en ningún lenguaje en particular. Es parecida a una clase en javascript, pero en javascript no funcionaría. 
+Mas adelante vamos a ver clases en javascript
+
+**/
+
+class Perro {
+  
+  /** 
+  
+  Estas son las variables de la clase. Se llaman atributos.
+  El conjunto de atributos de la clase se le suele llamar "estado (state)". De ahí surgen 2 términos:
+  Stateless --> son cosas que no tienen estado
+  Statefull --> son cosas que si tienen estado
+  
+  **/
+	nombre: string,
+	raza: string,
+	edad: int,
+	peso: int
+
+	function ladrar() {
+		console.log("guau guau");
+	}
+
+	function calcularVelocidadParaPerrosJovenes( distancia ) {
+		if(distancia<=10km) {
+			velocidad = 20;
+		} elseif(distancia>10km) {
+			velocidad=10;
+		}
+		return velocidad;
+	}
+
+	function calcularVelocidadParaPerrosViejos( distancia ) {
+		if(distancia<=10km) {
+			velocidad = 10;
+		} elseif(distancia>10km) {
+			velocidad=5;
+		}
+		return velocidad;
+	}
+
+	function comer(cantidadEnPeso) {
+		this.peso = this.peso + cantidadEnPeso;
+	}
+
+	function correr(distancia) {
+		if(this.edad<8) {
+			return this.calcularVelocidadParaPerrosJovenes(distancia);
+		} else {
+			return this.calcularVelocidadParaPerrosViejos(distancia);
+		}
+	}
+}
+
+
+const pacoObject = new Perro();
+pacoObject.nombre = "paco";
+pacoObject.raza = "mestizo";
+pacoObject.edad = 14;
+pacoObject.peso = 40;
+
+pacoObject.ladrar(); // guau guau
+
+pacoObject.comer(2);
+console.log(pacoObject.peso); // 42
+
+console.log(pacoObject.correr(7)); // 10 Km h
+
+const titoObject = new Perro();
+titoObject.nombre = "paco";
+titoObject.raza = "mestizo";
+titoObject.edad = 14;
+titoObject.peso = 40;
+

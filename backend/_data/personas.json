@@ -9,7 +9,8 @@
     "vip": true,
     "age": 22,
     "dni": "12569345",
-    "mascotas": ["perro","gato"]
+    "mascotas": ["perro","gato"],
+    "fobias": "A los huevos fritos"
   },
   {
     "userId": 2,
@@ -21,7 +22,8 @@
     "vip": true,
     "age": 45,
     "dni": "32269345",
-    "mascotas": ["perro"]
+    "mascotas": ["perro"],
+    "fobias": "A los viejos boludos"
   },
   {
     "userId": 3,
@@ -32,7 +34,8 @@
     "gender": "male", 
     "vip": false,
     "age": 10,
-    "dni": "12267345"
+    "dni": "12267345",
+    "fobias": "A las criptomonedas"
   },
   {
     "userId": 4,
@@ -44,7 +47,8 @@
     "vip": false,
     "age": 45,
     "dni": "12492100",
-    "mascotas": ["gato"]
+    "mascotas": ["gato"],
+    "fobias": "A las gatos"
   },
   {
     "userId": 5,
@@ -55,6 +59,7 @@
     "gender": "male",
     "vip": true,
     "age": 32,
-    "dni": "45889123"
+    "dni": "45889123",
+    "fobias": "A los juanes"
   }
 ]
